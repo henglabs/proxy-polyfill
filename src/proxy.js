@@ -155,8 +155,9 @@ module.exports = function proxyPolyfill() {
     }
 
     // The Proxy polyfill cannot handle adding new properties. Seal the target and proxy.
-    Object.seal(target);
-    Object.seal(proxy);
+    // 2019-09-09:@ThomasChan: do not seal target and proxy for ie11
+    // Object.seal(target);
+    // Object.seal(proxy);
 
     return proxy;  // nb. if isMethod is true, proxy != this
   };
